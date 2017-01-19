@@ -1,0 +1,33 @@
+#board {
+width: 100%;
+display: flex;
+justify-content: center;
+}
+
+#liste {
+  display: flex;
+  flex-wrap: wrap;
+  width: 350px;
+  height: 250px;
+  justify-content: space-around;
+  align-content: space-around;
+}
+
+ul {
+margin: 0;
+padding: 0;
+}
+
+li {
+  text-decoration: none;
+  list-style: none;
+}
+
+.case {
+width: 100px;
+height: 100px;
+border: solid 1px black;
+}
+.masque {
+  opacity: 0.5;
+}
