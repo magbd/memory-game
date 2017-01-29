@@ -1,0 +1,56 @@
+//////////////////////////////////////////
+HTML
+//////////////////////////////////////////
+
+<div id="game">
+  <div class="card">
+    <div class="front"></div>
+    <div class="back"></div>
+  </div>
+</div>
+
+//////////////////////////////////////////
+
+
+var enfants = enfants.game
+
+var compteur = 0
+var choix1 = ""
+var choix2 = ""
+var match = 0;
+
+function select(e)
+
+ compteur++;
+
+  si compteur == 1 faire
+    e.parentNode.classList.add('flipped')
+    choix1 = index
+  finSi
+
+  si compteur == 2 faire
+    e.parentNode.classList.add('flipped')
+    choix2 = index
+
+	si choix1 === choix2 faire
+
+	//ajout classe win pour que la carte ne soit plus jouable
+	pour chaque enfants.game faire
+	  enfants[i].contains.classList('flipped')
+	finPour
+	//match +=2
+		
+	finSi
+
+	sinon faire
+	  compteur = 0
+	  pour chaque enfants.game faire
+	    enfants[i].classList.contains('flipped').add('win');
+	  finPour
+	finSinon
+  finSi
+
+
+finSelectFunction
+
+game.onclick = select
