@@ -1,33 +1,61 @@
-#board {
-width: 100%;
+body {
+margin: 0 auto;
 display: flex;
 justify-content: center;
 }
 
-#liste {
+#game {
   display: flex;
   flex-wrap: wrap;
-  width: 350px;
-  height: 250px;
-  justify-content: space-around;
-  align-content: space-around;
+  justify-content: center;
+  width: 1000px;
 }
 
-ul {
-margin: 0;
-padding: 0;
+.card {
+  margin: 50px;
+  width: 200px;
+  height: 200px;
+  transition: all 0.2s;
+  perspective: 900px;
+  position: relative;
 }
 
-li {
-  text-decoration: none;
-  list-style: none;
+.front, .back {
+  /*padding: 10px;*/
+  position: absolute;
+  top:0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  min-height: 100%;
+  backface-visibility: hidden;
+  transform-style: preserve3d;
+  transition: all 0.4s;
 }
 
-.case {
-width: 100px;
-height: 100px;
-border: solid 1px black;
+/*img {
+  width: 80%;
+}*/
+
+.front {
+  background: teal;
 }
-.masque {
-  opacity: 0.5;
+
+.back {
+  background: #c3c3c3;
 }
+/*/////////////////////////////////////////////////*/
+/*FLIP CARD ANIMATION*/
+.front {
+  transform: rotateY(-180deg);
+}
+
+.flipped .front {
+  transform: rotateY(0deg);
+}
+
+.flipped .back {
+  transform: rotateY(180deg);
+}
+/*/////////////////////////////////////////////////*/
