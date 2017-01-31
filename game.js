@@ -28,47 +28,20 @@ function shuffle(a)
 // AFFICHAGE
 //////////////////////////////////////////////////////////
 var img = ["can.svg", "water.svg", "cocktail.svg", "can.svg", "water.svg", "cocktail.svg"];
-var imgOk = [];
 var back = "question-grey.svg";
-//var tableau=["can", "water", "cocktail", "can", "water", "cocktail"];
 
 //Lance l'affichage aléatoire du tableau img
 shuffle(img);
 
-// //vérifie si l'image est dans le tableau imgOK
-// function estOk(testOk)
-// {
-//   for(i = 0; i < imgOk.length; i++) {
-//
-//     if (imgOk[i]===testOk) {
-//       return true;
-//       //j'affiche face visible
-//     }
-//   }
-//   return false;
-//   //  j'affiche face caché
-// }
-
-
-
 function affiche() {
   $jeu="";
   var i;
-  // for(i = 0; i < img.length; i++) {
 
-  // if (estOk(img[i])) {
-  //Si img[i] dans tableau imgOk => afficher face (...et retirer le click ??)
   for(i = 0; i < img.length; i++){
     $jeu += "<div id=\"img" + i + "\" class=\"card\"> <img class=\"front\" name ="+i+" src=\"img/" + img[i] + "\"/><img class=\"back\"name ="+i+" src=\"img/" + back + "\"/></div>";
     // console.log("ok");
   }
-  // }
-  // else {
-  //sinon
-  //Si img[i] dans tableau img => afficher le dos
-  // $card += "<div id=\"img" + i + "\" class=\"case\"> <img name ="+i+" src=\"img/" + img[i] + "\"/></div>";
-  // }
-  // }
+
   console.log(i);
   $game.innerHTML = $jeu;
 }
@@ -91,7 +64,7 @@ function select(e){
   // console.log(e.target.name) // affiche index
 
 compteur++;
-  if (compteur <= 2){
+  if (compteur %2 == 1){
     e.target.parentNode.classList.add('flipped');
     // $choix1= img[e.target.name]; //VALEUR
     $choix1 = e.target.name; //INDEX
@@ -99,19 +72,18 @@ compteur++;
     console.log(img[$choix1]);
   }
   else {
+    e.target.parentNode.classList.add('flipped');
       // $choix2= img[e.target.name]; //VALEUR
       $choix2 = e.target.name; //INDEX
       console.log("index " + $choix2);
       console.log(img[$choix2]);
 
       if(win()) {
-        alert("select/if win");
+        alert("ajouter classe win");
       }
       else {
-        alert("select/else perdu");
         for (var i = 0; i < $x.length; i++){
           $x[i].classList.remove('flipped');
-          compteur = 0;
         }
       }
 
@@ -123,83 +95,11 @@ compteur++;
 $game.onclick = select;
 // $game.onclick = select, choix;
 
-//////////////////////////////////////////////////////////
-// JEU
-//////////////////////////////////////////////////////////
-
-
-
-
-
-function choix(e){
-  console.log(img[e.target.name]); // affiche valeur du tableau
-  console.log(e.target.name) // affiche index
-  // e.target.parentNode.classList.toggle('flipped'); OK
-
-
-  // if (compteur%2 == 0){
-  //   // $choix1= img[e.target.name]; //VALEUR
-  //   $choix1 = e.target.name; //INDEX
-  //   console.log("index " + $choix1);
-  //   console.log(img[$choix1]);
-  //
-  // }
-  // else {
-  //   // $choix2= img[e.target.name]; //VALEUR
-  //   $choix2 = e.target.name; //INDEX
-  //   console.log("index " + $choix2);
-  //   console.log(img[$choix2]);
-  //
-  //
-  //   if(win())
-  //   //supprimer du tableau => d'abord l'index le plus grand
-  //
-  //   {
-  //     if ($choix1 > $choix2){
-  //       alert("index choix1 est plus grand : " + $choix1);
-  //       //Envoie les cartes validées dans un nouveau tableau imgOk
-  //       imgOk.push(img[$choix1]);
-  //       imgOk.push(img[$choix2]);
-  //       //Supprime du tableau img
-  //       img.splice($choix1,1);
-  //       img.splice($choix2,1);
-  //
-  //     }
-  //     // sinon supprimer $choix2
-  //     else {
-  //       alert("index choix2 est plus grand : " + $choix2);
-  //       //Envoie les cartes validées dans un nouveau tableau imgOk
-  //       imgOk.push(img[$choix2]);
-  //       imgOk.push(img[$choix1]);
-  //       //Supprime du tableau img
-  //       img.splice($choix2,1);
-  //       img.splice($choix1,1);
-  //     }
-  //     console.log(img);
-  //     console.log(imgOk);
-  //
-  //     affiche();
-  //
-  //
-  //     // img.pop();
-  //     // img.pop();
-  //     // affiche();
-  //   }
-  //
-  // }
-  // compteur++;
-  // console.log("compteur = " + compteur);
-
-}
-
 
 function win(){
   alert("je suis dans win");
   if (img[$choix1] === img[$choix2]) {
-    alert("gagné ! je suis dans la condition true de win");
-
-
-    // alert(img[$choix1]);
+  // alert(img[$choix1]);
     return true;
   }
   else {

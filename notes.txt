@@ -23,12 +23,12 @@ function select(e)
 
  compteur++;
 
-  si compteur == 1 faire
+  si compteur %2 == 1 faire
     e.parentNode.classList.add('flipped')
     choix1 = index
   finSi
 
-  si compteur == 2 faire
+  sinon faire
     e.parentNode.classList.add('flipped')
     choix2 = index
 
@@ -43,12 +43,12 @@ function select(e)
 	finSi
 
 	sinon faire
-	  compteur = 0
+	  
 	  pour chaque enfants.game faire
 	    enfants[i].classList.contains('flipped').add('win');
 	  finPour
 	finSinon
-  finSi
+  finSinon
 
 
 finSelectFunction
