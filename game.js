@@ -92,13 +92,13 @@ $game.onclick = select;
 
 
 function win(){
-  // alert("je suis dans win");
+  alert("je suis dans win");
   if (img[$choix1] === img[$choix2]) {
   // alert(img[$choix1]);
     return true;
   }
   else {
-    // alert("perdu !");
+    alert("perdu !");
     return false;
   }
 }
