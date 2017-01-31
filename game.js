@@ -1,5 +1,6 @@
 var $game = document.getElementById('game');
-var $card = document.getElementById('game').getElementsByClassName('card');
+$x = $game.children;
+// var $card = document.getElementById('game').getElementsByClassName('card');
 var $jeu = "";
 
 // $tableau = $board.children;
@@ -27,8 +28,8 @@ function shuffle(a)
 //////////////////////////////////////////////////////////
 // AFFICHAGE
 //////////////////////////////////////////////////////////
-var img = ["can.svg", "water.svg", "cocktail.svg", "can.svg", "water.svg", "cocktail.svg"];
-var back = "question-grey.svg";
+var img = ["memory_icecream.png", "memory_rainbow.png", "memory_watermelon.png", "memory_icecream.png", "memory_rainbow.png", "memory_watermelon.png"];
+var back = "memory-_back.png";
 
 //Lance l'affichage aléatoire du tableau img
 shuffle(img);
@@ -47,19 +48,13 @@ function affiche() {
 }
 affiche();
 
-// FLIP CARD JQUERY
-// $('.card').click(function (e) {
-//   $(this).toggleClass('flipped');
-// });
 
-$x = $game.children;
+
 var $choix1="";
 var $choix2="";
 var compteur = 0;
 
 function select(e){
-  // e.target.parentNode.classList.toggle('flipped');
-
   // console.log(img[e.target.name]); // affiche valeur du tableau
   // console.log(e.target.name) // affiche index
 
@@ -97,13 +92,13 @@ $game.onclick = select;
 
 
 function win(){
-  alert("je suis dans win");
+  // alert("je suis dans win");
   if (img[$choix1] === img[$choix2]) {
   // alert(img[$choix1]);
     return true;
   }
   else {
-    alert("perdu !");
+    // alert("perdu !");
     return false;
   }
 }

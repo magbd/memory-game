@@ -1,7 +1,36 @@
 body {
-margin: 0 auto;
-display: flex;
-justify-content: center;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  background-image: url("img/shattered-island.gif");
+}
+
+#container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+h1, p {
+  color: white;
+  text-transform: uppercase;
+  margin: 0;
+  font-weight: normal;
+}
+
+h1 {
+  font-family: 'Anton', sans-serif;
+  font-size: 2em;
+}
+
+p {
+  font-family: 'News Cycle', sans-serif;
+  font-size: 1em;
+}
+
+p span {
+  text-transform: lowercase;
 }
 
 #game {
@@ -12,7 +41,7 @@ justify-content: center;
 }
 
 .card {
-  margin: 50px;
+  margin: 30px;
   width: 200px;
   height: 200px;
   transition: all 0.2s;
@@ -21,21 +50,22 @@ justify-content: center;
 }
 
 .front, .back {
-  /*padding: 10px;*/
+  /*padding: 30px;*/
   position: absolute;
   top:0;
   right: 0;
   left: 0;
   bottom: 0;
   width: 100%;
-  min-height: 100%;
+  height: 100%;
   backface-visibility: hidden;
   transform-style: preserve3d;
   transition: all 0.4s;
+  border: solid 5px #23232C;
 }
 
 /*img {
-  width: 80%;
+width: 80%;
 }*/
 
 .front {
@@ -45,6 +75,7 @@ justify-content: center;
 .back {
   background: #c3c3c3;
 }
+
 /*/////////////////////////////////////////////////*/
 /*FLIP CARD ANIMATION*/
 .front {
