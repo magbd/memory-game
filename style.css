@@ -11,13 +11,30 @@ body {
   flex-direction: column;
   margin-top: 20px;
 }
-
+header{
+  display: flex;
+  /*flex-direction: row;*/
+  justify-content: space-between;
+  margin: 0 5px 10px 5px;
+}
+#title {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+#moves {
+  display: flex;
+  flex: 1;
+  justify-content: flex-end;
+  align-items: flex-end;
+  /*align-content: flex-end;*/
+  /*text-align: right;*/
+}
 h1, p {
   color: white;
   text-transform: uppercase;
   margin: 0;
   font-weight: normal;
-  margin-left: 5px;
 }
 
 h1 {
@@ -29,7 +46,6 @@ h1 {
 p {
   font-family: 'News Cycle', sans-serif;
   font-size: 1em;
-  margin-bottom: 10px;
 }
 
 p span {
@@ -95,3 +111,6 @@ width: 80%;
   transform: rotateY(180deg);
 }
 /*/////////////////////////////////////////////////*/
+.win {
+/*cursor: none;*/
+}

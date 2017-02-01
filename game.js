@@ -1,11 +1,22 @@
 var $game = document.getElementById('game');
-$x = $game.children;
+var $x = $game.children;
 var $card = document.getElementById('game').getElementsByClassName('card');
+var $moves = document.getElementById('moves');
 var $jeu = "";
+var $choix1="";
+var $choix2="";
+var $compteur = 0;
+var $match = 0;
+var $compteurMoves = 0;
 
-// $tableau = $board.children;
 
+//////////////////////////////////////////////////////////
+// AFFICHAGE
+//////////////////////////////////////////////////////////
+$moves.innerHTML = "MOVES : "+$compteurMoves; //affichage compteur coups joués
 
+var $img = ["memory_icecream.png", "memory_rainbow.png", "memory_watermelon.png", "memory_icecream.png", "memory_rainbow.png", "memory_watermelon.png"];
+var $back = "memory_back.png";
 
 function shuffle(a)
 {
@@ -25,73 +36,100 @@ function shuffle(a)
   return a;
 }
 
-//////////////////////////////////////////////////////////
-// AFFICHAGE
-//////////////////////////////////////////////////////////
-var img = ["memory_icecream.png", "memory_rainbow.png", "memory_watermelon.png", "memory_icecream.png", "memory_rainbow.png", "memory_watermelon.png"];
-var back = "memory-_back.png";
-
-//Lance l'affichage aléatoire du tableau img
-shuffle(img);
+//Lance l'affichage aléatoire du tableau $img
+shuffle($img);
 
 function affiche() {
   $jeu="";
   var i;
 
-  for(i = 0; i < img.length; i++){
-    $jeu += "<div id=\"img" + i + "\" class=\"card\"> <img class=\"front\" name ="+i+" src=\"img/" + img[i] + "\"/><img class=\"back\"name ="+i+" src=\"img/" + back + "\"/></div>";
-    // console.log("ok");
+  for(i = 0; i < $img.length; i++){
+    $jeu += "<div id=\"img" + i + "\" class=\"card onGame\"> <img class=\"front\" name ="+i+" src=\"img/" + $img[i] + "\"/><img class=\"back\"name ="+i+" src=\"img/" + $back + "\"/></div>";
   }
 
-  console.log(i);
   $game.innerHTML = $jeu;
 }
 affiche();
 
+//////////////////////////////////////////////////////////
+// JEU
+//////////////////////////////////////////////////////////
 
-
-var $choix1="";
-var $choix2="";
-var compteur = 0;
-
-function select(e){
-  // console.log(img[e.target.name]); // affiche valeur du tableau
-  // console.log(e.target.name) // affiche index
-
-  compteur++;
-  if (compteur %2 == 1){
-    e.target.parentNode.classList.add('flipped');
-    // $choix1= img[e.target.name]; //VALEUR
-    $choix1 = e.target.name; //INDEX
-    console.log("index " + $choix1);
-    console.log(img[$choix1]);
+function play(e){
+  if (verifie(e)) { //fonction qui vérifie si la carte a été jouée
+    alert ("Choisissez une autre carte !");
+  } else { // fonction qui selectionne la carte choix1 puis choix2
+    select(e);
   }
-  else {
-    e.target.parentNode.classList.add('flipped');
-    // $choix2= img[e.target.name]; //VALEUR
-    $choix2 = e.target.name; //INDEX
-    console.log("index " + $choix2);
-    console.log(img[$choix2]);
+}
 
-    timer = setInterval("win()", 1000);
-
+function verifie(e){
+  if (e.target.parentNode.classList.contains('flipped') || e.target.parentNode.classList.contains('win')) {
+    return true
+    //si condition true, la fonction s'arrete et exécute ligne 60 alert("Choisissez une autre carte !")
+  } else {
+    return false
+    // si condition false, lance la ligne 62 et lance la fonction select(e)
   }
 }
 
 
-$game.onclick = select;
+function select(e){
+  // console.log($img[e.target.name]); // affiche valeur du tableau
+  // console.log(e.target.name) // affiche index
+
+  $compteur++;
+  if ($compteur %2 == 1){
+    e.target.parentNode.classList.add('flipped');
+    // $choix1= $img[e.target.name]; //VALEUR
+    $choix1 = e.target.name; //INDEX
+    console.log("index " + $choix1);
+    console.log($img[$choix1]);
+  }
+  else {
+    e.target.parentNode.classList.add('flipped');
+    // $choix2= $img[e.target.name]; //VALEUR
+    $choix2 = e.target.name; //INDEX
+    console.log("index " + $choix2);
+    console.log($img[$choix2]);
+
+    $compteurMoves ++;
+
+    timer = setInterval("win()", 1000);
+
+  }
+
+  $moves.innerHTML = "MOVES : "+$compteurMoves;
+}
+
+
+// $game.onclick = select;
+$game.onclick = play;
 
 
 function win(){
+
   clearInterval(timer); //stop timer
-  if (img[$choix1] === img[$choix2]) {
-    // alert(img[$choix1]);
-    alert("gagné!");
+  if ($img[$choix1] === $img[$choix2]) {
+    $match += 2;
+    // alert($img[$choix1]);
+    // alert("gagné!");
+    for (var i = 0; i < $x.length; i++){
+      if($x[i].classList.contains('flipped')){
+        $x[i].classList.add('win');
+        $x[i].classList.remove('onGame');
+      }
+    }
+    if($match == 6){
+      alert("BRAVO ! Partie terminée en " + $compteurMoves + " coups !");
+    }
   }
   else {
-    alert("perdu !");
+    // alert("perdu !");
     for (var i = 0; i < $x.length; i++){
-      $x[i].classList.remove('flipped');
+      if($x[i].classList.contains('onGame')){
+        $x[i].classList.remove('flipped');
+      }
     }
   }
 }
