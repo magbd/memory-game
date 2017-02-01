@@ -32,25 +32,35 @@ function select(e)
     e.parentNode.classList.add('flipped')
     choix2 = index
 
-	si choix1 === choix2 faire
+    timer = setInterval("win()", 1000);
 
-	//ajout classe win pour que la carte ne soit plus jouable
-	pour chaque enfants.game faire
-	  enfants[i].contains.classList('flipped')
-	finPour
-	//match +=2
-		
-	finSi
 
-	sinon faire
-	  
-	  pour chaque enfants.game faire
-	    enfants[i].classList.contains('flipped').add('win');
-	  finPour
-	finSinon
+
   finSinon
 
 
 finSelectFunction
+
+function win(){
+
+  clearInterval(timer); //stop timer
+
+  si choix1 === choix2 faire
+  //ajout classe win pour que la carte ne soit plus jouable
+  //compteur match pour vérifier si jeu fini ? //match +=2
+
+    pour chaque enfants.game faire
+      si enfants[i].contains.classList('flipped')
+	enfants[i].classList.contains('flipped').add('win');
+      finSi
+    finPour	
+  finSi
+
+  sinon faire
+    pour chaque enfants.game faire
+     enfants[i].classList.remove('flipped')
+    finPour
+  finSinon
+}
 
 game.onclick = select

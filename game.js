@@ -1,6 +1,6 @@
 var $game = document.getElementById('game');
 $x = $game.children;
-// var $card = document.getElementById('game').getElementsByClassName('card');
+var $card = document.getElementById('game').getElementsByClassName('card');
 var $jeu = "";
 
 // $tableau = $board.children;
@@ -58,7 +58,7 @@ function select(e){
   // console.log(img[e.target.name]); // affiche valeur du tableau
   // console.log(e.target.name) // affiche index
 
-compteur++;
+  compteur++;
   if (compteur %2 == 1){
     e.target.parentNode.classList.add('flipped');
     // $choix1= img[e.target.name]; //VALEUR
@@ -68,37 +68,30 @@ compteur++;
   }
   else {
     e.target.parentNode.classList.add('flipped');
-      // $choix2= img[e.target.name]; //VALEUR
-      $choix2 = e.target.name; //INDEX
-      console.log("index " + $choix2);
-      console.log(img[$choix2]);
+    // $choix2= img[e.target.name]; //VALEUR
+    $choix2 = e.target.name; //INDEX
+    console.log("index " + $choix2);
+    console.log(img[$choix2]);
 
-      if(win()) {
-        alert("ajouter classe win");
-      }
-      else {
-        for (var i = 0; i < $x.length; i++){
-          $x[i].classList.remove('flipped');
-        }
-      }
-
+    timer = setInterval("win()", 1000);
 
   }
-
 }
 
+
 $game.onclick = select;
-// $game.onclick = select, choix;
 
 
 function win(){
-  alert("je suis dans win");
+  clearInterval(timer); //stop timer
   if (img[$choix1] === img[$choix2]) {
-  // alert(img[$choix1]);
-    return true;
+    // alert(img[$choix1]);
+    alert("gagné!");
   }
   else {
     alert("perdu !");
-    return false;
+    for (var i = 0; i < $x.length; i++){
+      $x[i].classList.remove('flipped');
+    }
   }
 }
