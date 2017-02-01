@@ -1,13 +1,62 @@
 var $game = document.getElementById('game');
 var $x = $game.children;
-var $card = document.getElementById('game').getElementsByClassName('card');
+// var $card = document.getElementById('game').getElementsByClassName('card');
 var $moves = document.getElementById('moves');
+// Niveaux dificulté :
+var $levels = document.getElementById('levels');
+// var $levelEasy = document.getElementById('levelEasy');
+// var $levelMedium = document.getElementById('levelMedium');
+// var $levelHard = document.getElementById('levelHard');
+//Variables du jeu :
 var $jeu = "";
 var $choix1="";
 var $choix2="";
 var $compteur = 0;
 var $match = 0;
 var $compteurMoves = 0;
+var $img=[];
+//////////////////////////////////////////////////////////
+// CHOIX LEVEL = DEFINITION DU TABLEAU $img
+//////////////////////////////////////////////////////////
+function choixLevel(e){
+  // alert("choix niveau");
+  // alert(e.target.classList);
+
+  if(e.target.classList.contains('levelEasy')){
+    alert("niveau facile");
+    $img = ["memory_icecream.png", "memory_rainbow.png", "memory_watermelon.png", "memory_icecream.png", "memory_rainbow.png", "memory_watermelon.png"];
+    //Lance l'affichage aléatoire du tableau $img
+
+    // return true; //stop l'exécution de la fonction
+  }
+  if(e.target.classList.contains('levelMedium')){
+    alert("niveau moyen");
+    return true; //stop l'exécution de la fonction
+  }
+  if(e.target.classList.contains('levelHard')){
+    alert("niveau difficile");
+    return true; //stop l'exécution de la fonction
+  }
+  shuffle($img);
+  affiche();
+  //si choix Easy faire
+  // NIVEAU 4x2 (total 2x4 images différentes)
+  // var $img = ["memory_icecream.png", "memory_rainbow.png", "memory_watermelon.png", "memory_icecream.png", "memory_rainbow.png", "memory_watermelon.png"];
+  //PREVOIR CLASSE EASY POUR GESTION CSS DES DIFFERENTES TAILLE DE JEU
+  //finSi
+
+  //si choix Medium faire
+  // NIVEAU 6x3 (total 2x9 images différentes)
+  // var $img =
+  //finSi
+
+  //si choix Hard faire
+  // NIVEAU 8x4 (total 2x16 images différentes)
+  // var $img =
+  //finSi
+
+}
+$levels.onclick = choixLevel;
 
 
 //////////////////////////////////////////////////////////
@@ -15,7 +64,7 @@ var $compteurMoves = 0;
 //////////////////////////////////////////////////////////
 $moves.innerHTML = "MOVES : "+$compteurMoves; //affichage compteur coups joués
 
-var $img = ["memory_icecream.png", "memory_rainbow.png", "memory_watermelon.png", "memory_icecream.png", "memory_rainbow.png", "memory_watermelon.png"];
+// var $img = ["memory_icecream.png", "memory_rainbow.png", "memory_watermelon.png", "memory_icecream.png", "memory_rainbow.png", "memory_watermelon.png"];
 var $back = "memory_back.png";
 
 function shuffle(a)
@@ -36,8 +85,7 @@ function shuffle(a)
   return a;
 }
 
-//Lance l'affichage aléatoire du tableau $img
-shuffle($img);
+
 
 function affiche() {
   $jeu="";
@@ -49,7 +97,7 @@ function affiche() {
 
   $game.innerHTML = $jeu;
 }
-affiche();
+// affiche();
 
 //////////////////////////////////////////////////////////
 // JEU
@@ -103,7 +151,6 @@ function select(e){
 }
 
 
-// $game.onclick = select;
 $game.onclick = play;
 
 
