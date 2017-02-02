@@ -1,3 +1,6 @@
+/*/////////////////////////////////////////////////*/
+/*GENERAL*/
+
 body {
   margin: 0 auto;
   display: flex;
@@ -11,11 +14,41 @@ body {
   flex-direction: column;
   margin-top: 20px;
 }
+/*/////////////////////////////////////////////////*/
+/*TEXTES ACCUEIL*/
+#accueil {
+  display: flex;
+  /*align-content: center;
+  justify-content: center;*/
+  text-align: center;
+  flex-direction: column;
+  margin-top: 100px;
+}
+
+/*h2, #accueil p{
+  color: white;
+}*/
+h2 {
+font-family: 'Anton', sans-serif;
+font-weight: normal;
+color:#0db5fc;
+}
+
+#accueil p {
+  margin-top: 50px;
+  text-transform: inherit;
+  font-size: 1.2em;
+}
+
+/*/////////////////////////////////////////////////*/
+/*TEXTES BANDEAU HAUT FIXE*/
+
 header{
   display: flex;
-  /*flex-direction: row;*/
   justify-content: space-between;
   margin: 0 5px 10px 5px;
+  padding-bottom: 10px;
+  border-bottom: solid 1px #949494;
 }
 #title {
   display: flex;
@@ -33,22 +66,30 @@ header{
   justify-content: space-between;
 }
 #levels p {
+  /*font-family: 'News Cycle', sans-serif;*/
   font-family: 'Anton', sans-serif;
-
 }
-#levelEasy:hover, #levelMedium:hover, #levelHard:hover{
-  color:#0db5fc;
+#levels p:first-child{
+  font-family: 'News Cycle', sans-serif;
+}
+p.levelEasy, p.levelMedium, p.levelHard {
+  /*font-family: 'Anton', sans-serif;*/
   cursor: pointer;
 }
-/*#levels p .active{
-  color: #f143b1;
-}*/
+
+.levelEasy:hover, .levelMedium:hover, .levelHard:hover{
+  color:#e2e2e2;
+}
+
+.levelEasy.active, .levelMedium.active, .levelHard.active{
+  /*border-bottom: solid 1px #949494;*/
+  color: #B1B1B1;
+}
+
 #moves {
   display: flex;
   justify-content: flex-end;
   align-items: flex-end;
-  /*align-content: flex-end;*/
-  /*text-align: right;*/
 }
 h1, p {
   color: white;
@@ -71,6 +112,9 @@ p {
 p span {
   text-transform: lowercase;
 }
+
+/*/////////////////////////////////////////////////*/
+/*MISE EN FORME JEU/CARTES*/
 
 #game {
   display: flex;
@@ -104,7 +148,6 @@ p span {
 }
 
 .front, .back {
-  /*padding: 30px;*/
   position: absolute;
   top:0;
   right: 0;
@@ -117,10 +160,6 @@ p span {
   transition: all 0.4s;
   border: solid 5px #23232C;
 }
-
-/*img {
-width: 80%;
-}*/
 
 .front {
   background: teal;
@@ -142,8 +181,4 @@ width: 80%;
 
 .flipped .back {
   transform: rotateY(180deg);
-}
-/*/////////////////////////////////////////////////*/
-.win {
-/*cursor: none;*/
 }

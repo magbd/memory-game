@@ -1,12 +1,12 @@
+// Variables jeu de carte
 var $game = document.getElementById('game');
 var $x = $game.children;
-// var $card = document.getElementById('game').getElementsByClassName('card');
+//Variable pour l'affichage du nombre de coups
 var $moves = document.getElementById('moves');
 // Niveaux dificulté :
 var $levels = document.getElementById('levels');
-// var $levelEasy = document.getElementById('levelEasy');
-// var $levelMedium = document.getElementById('levelMedium');
-// var $levelHard = document.getElementById('levelHard');
+var $arrayLevel = $levels.children;
+
 //Variables du jeu :
 var $level ="";
 var $jeu = "";
@@ -24,7 +24,8 @@ function choixLevel(e){
   // alert(e.target.classList);
 
   if(e.target.classList.contains('levelEasy')){
-    alert("niveau facile");
+    // NIVEAU 4x2 (4 paires différentes)
+    // alert("niveau facile");
     $img = [
       "memory_cactus.png", "memory_cactus.png",
       "memory_rainbow.png", "memory_rainbow.png",
@@ -34,59 +35,52 @@ function choixLevel(e){
     $level = "Easy"; //génère classe CardEasy dans l'affichage
   }
   if(e.target.classList.contains('levelMedium')){
-    alert("niveau moyen");
+    // NIVEAU 6x3 (9 paires différentes)
+    // alert("niveau moyen");
     $img = [
       "memory_cactus.png", "memory_cactus.png",
       "memory_rainbow.png", "memory_rainbow.png",
       "memory_watermelon.png", "memory_watermelon.png",
       "memory_icecream.png", "memory_icecream.png",
-      "memory_cactus.png", "memory_cactus.png",
-      "memory_rainbow.png", "memory_rainbow.png",
-      "memory_watermelon.png", "memory_watermelon.png",
-      "memory_icecream.png", "memory_icecream.png",
-      "memory_watermelon.png", "memory_watermelon.png",
+      "memory_sorbet.png", "memory_sorbet.png",
+      "memory_lolipop.png", "memory_lolipop.png",
+      "memory_pineapple.png", "memory_pineapple.png",
+      "memory_donut.png", "memory_donut.png",
+      "memory_banana.png", "memory_banana.png",
     ];
     $level = "Medium"; //génère classe cardMedium dans l'affichage
   }
   if(e.target.classList.contains('levelHard')){
-    alert("niveau difficile");
+    // NIVEAU 8x4 (16 paires différentes)
+    // alert("niveau difficile");
     $img = [
       "memory_cactus.png", "memory_cactus.png",
       "memory_rainbow.png", "memory_rainbow.png",
       "memory_watermelon.png", "memory_watermelon.png",
       "memory_icecream.png", "memory_icecream.png",
-      "memory_cactus.png", "memory_cactus.png",
-      "memory_rainbow.png", "memory_rainbow.png",
-      "memory_watermelon.png", "memory_watermelon.png",
-      "memory_icecream.png", "memory_icecream.png",
-      "memory_cactus.png", "memory_cactus.png",
-      "memory_rainbow.png", "memory_rainbow.png",
-      "memory_watermelon.png", "memory_watermelon.png",
-      "memory_icecream.png", "memory_icecream.png",
-      "memory_cactus.png", "memory_cactus.png",
-      "memory_rainbow.png", "memory_rainbow.png",
-      "memory_watermelon.png", "memory_watermelon.png",
-      "memory_icecream.png", "memory_icecream.png",
+      "memory_diamond.png", "memory_diamond.png",
+      "memory_light.png", "memory_light.png",
+      "memory_banana.png", "memory_banana.png",
+      "memory_donut.png", "memory_donut.png",
+      "memory_lolipop.png", "memory_lolipop.png",
+      "memory_cloud.png", "memory_cloud.png",
+      "memory_lipstick.png", "memory_lipstick.png",
+      "memory_sorbet.png", "memory_sorbet.png",
+      "memory_stripe.png", "memory_stripe.png",
+      "memory_pineapple.png", "memory_pineapple.png",
+      "memory_hotdog.png", "memory_hotdog.png",
+      "memory_pizza.png", "memory_pizza.png",
     ];    $level = "Hard"; //génère classe cardHard dans l'affichage
+
   }
+  for (var i=0; i<$arrayLevel.length; i++) {
+    if($arrayLevel[i].classList.contains('active')){
+      $arrayLevel[i].classList.toggle('active');
+    }
+  }
+  e.target.classList.add('active');
   shuffle($img);
   affiche();
-  //si choix Easy faire
-  // NIVEAU 4x2 (total 8 2x4 images différentes)
-  // var $img = ["memory_icecream.png", "memory_rainbow.png", "memory_watermelon.png", "memory_icecream.png", "memory_rainbow.png", "memory_watermelon.png"];
-  //PREVOIR CLASSE EASY POUR GESTION CSS DES DIFFERENTES TAILLE DE JEU
-  //finSi
-
-  //si choix Medium faire
-  // NIVEAU 6x3 (total 2x9 images différentes)
-  // var $img =
-  //finSi
-
-  //si choix Hard faire
-  // NIVEAU 8x4 (total 2x16 images différentes)
-  // var $img =
-  //finSi
-
 }
 $levels.onclick = choixLevel;
 
@@ -117,8 +111,6 @@ function shuffle(a)
   return a;
 }
 
-
-
 function affiche() {
   $jeu="";
   var i;
@@ -129,7 +121,6 @@ function affiche() {
 
   $game.innerHTML = $jeu;
 }
-// affiche();
 
 //////////////////////////////////////////////////////////
 // JEU
