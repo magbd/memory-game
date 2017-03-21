@@ -182,3 +182,59 @@ p span {
 .flipped .back {
   transform: rotateY(180deg);
 }
+
+/*/////////////////////////////////////////////////*/
+/*MODAL WIN*/
+
+/* Modal (background) */
+.modal {
+  display: none; /* Caché par défaut */
+  position: fixed;
+  z-index: 1;
+  background-color: rgba(255, 255, 255, 0.5);
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Modal Content/Box */
+.modal-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 15% auto;
+  padding: 20px;
+  width: 40%;
+  text-align: center;
+}
+
+.modal-content img {
+  width: 100%;
+}
+
+.gameOver{
+  text-transform: uppercase;
+  font-size: 2.5em;
+}
+
+#replay {
+  font-size: 2em;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #4C3C46;
+  /*background-color: rgba(255, 255, 255, 0.5);*/
+  /*padding: 10px 5px;
+  border: solid 2px #533846;
+  border-radius: 20px;
+  width: 30%;*/
+  margin-top: 20px;
+}
+
+#replay:hover,
+#replay:focus {
+  color: #676064;
+  text-decoration: none;
+  cursor: pointer;
+}

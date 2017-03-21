@@ -32,7 +32,7 @@ function choixLevel(e){
       "memory_watermelon.png", "memory_watermelon.png",
       "memory_icecream.png", "memory_icecream.png",
     ];
-    $level = "Easy"; //génère classe CardEasy dans l'affichage
+    $level = "Easy"; //génère classe CardEasy dans l'affichage CSS
   }
   if(e.target.classList.contains('levelMedium')){
     // NIVEAU 6x3 (9 paires différentes)
@@ -48,7 +48,7 @@ function choixLevel(e){
       "memory_donut.png", "memory_donut.png",
       "memory_banana.png", "memory_banana.png",
     ];
-    $level = "Medium"; //génère classe cardMedium dans l'affichage
+    $level = "Medium"; //génère classe cardMedium dans l'affichage CSS
   }
   if(e.target.classList.contains('levelHard')){
     // NIVEAU 8x4 (16 paires différentes)
@@ -70,7 +70,7 @@ function choixLevel(e){
       "memory_pineapple.png", "memory_pineapple.png",
       "memory_hotdog.png", "memory_hotdog.png",
       "memory_pizza.png", "memory_pizza.png",
-    ];    $level = "Hard"; //génère classe cardHard dans l'affichage
+    ];    $level = "Hard"; //génère classe cardHard dans l'affichage CSS
 
   }
   for (var i=0; i<$arrayLevel.length; i++) {
@@ -79,8 +79,7 @@ function choixLevel(e){
     }
   }
   e.target.classList.add('active');
-  shuffle($img);
-  affiche();
+  restart();
 }
 $levels.onclick = choixLevel;
 
@@ -166,7 +165,7 @@ function select(e){
 
     $compteurMoves ++;
 
-    timer = setInterval("win()", 1000);
+    timer = setInterval("win()", 1000); // timer avant de retourner les cartes ne sont pas identiques
 
   }
 
@@ -191,7 +190,10 @@ function win(){
       }
     }
     if($match == $img.length){
-      alert("BRAVO ! Partie terminée en " + $compteurMoves + " coups !");
+      // alert("BRAVO ! Partie terminée en " + $compteurMoves + " coups !");
+      modal.style.display = "block";
+      modalScore.innerHTML = $compteurMoves;
+
     }
   }
   else {
@@ -202,4 +204,30 @@ function win(){
       }
     }
   }
+}
+
+
+//////////////////////////////////////////////////////////
+// MODAL WIN
+//////////////////////////////////////////////////////////
+
+var modal = document.getElementById('myModal');
+// Element qui ferme la modal
+var replay = document.getElementById("replay");
+var modalScore = document.getElementById('modalScore');
+
+
+replay.onclick = function() {
+  // ferme la modal
+  modal.style.display = "none";
+  restart();
+}
+
+function restart(){
+  // relance l'affichage et le mode aléatoire sur le tableau img
+  shuffle($img);
+  affiche();
+  // remise à zéro du compteurMoves et actualisation de l'affichage
+  $compteurMoves = 0;
+  $moves.innerHTML = "MOVES : "+$compteurMoves; 
 }
