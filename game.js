@@ -229,5 +229,7 @@ function restart(){
   affiche();
   // remise à zéro du compteurMoves et actualisation de l'affichage
   $compteurMoves = 0;
-  $moves.innerHTML = "MOVES : "+$compteurMoves; 
+  $moves.innerHTML = "MOVES : "+$compteurMoves;
+  // remise à zéro compteur de paires trouvées (comparé à tableau img.lenght pour function win())
+  $match = 0;
 }

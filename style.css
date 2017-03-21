@@ -25,9 +25,6 @@ body {
   margin-top: 100px;
 }
 
-/*h2, #accueil p{
-  color: white;
-}*/
 h2 {
 font-family: 'Anton', sans-serif;
 font-weight: normal;
@@ -77,13 +74,16 @@ p.levelEasy, p.levelMedium, p.levelHard {
   cursor: pointer;
 }
 
+.levelEasy, .levelMedium, .levelHard{
+  color: #B1B1B1;
+}
+
 .levelEasy:hover, .levelMedium:hover, .levelHard:hover{
   color:#e2e2e2;
 }
 
 .levelEasy.active, .levelMedium.active, .levelHard.active{
-  /*border-bottom: solid 1px #949494;*/
-  color: #B1B1B1;
+  color: white;
 }
 
 #moves {
@@ -191,7 +191,7 @@ p span {
   display: none; /* Caché par défaut */
   position: fixed;
   z-index: 1;
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(48, 51, 59, 0.5);
   left: 0;
   top: 0;
   width: 100%;
@@ -208,10 +208,14 @@ p span {
   padding: 20px;
   width: 40%;
   text-align: center;
+
+  background-color: rgb(48, 51, 59);
+  border-radius: 20px;
+  border: solid #23232C 5px;
 }
 
 .modal-content img {
-  width: 100%;
+  width: 30%;
 }
 
 .gameOver{
@@ -220,15 +224,10 @@ p span {
 }
 
 #replay {
+  font-family: 'Anton', sans-serif;
   font-size: 2em;
-  font-weight: bold;
   text-transform: uppercase;
-  color: #4C3C46;
-  /*background-color: rgba(255, 255, 255, 0.5);*/
-  /*padding: 10px 5px;
-  border: solid 2px #533846;
-  border-radius: 20px;
-  width: 30%;*/
+  color: white;
   margin-top: 20px;
 }
 
